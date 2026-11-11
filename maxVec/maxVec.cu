@@ -14,7 +14,7 @@ __global__ void maxVec(float* a, float* b, const int size) {
     }
     __syncthreads();
     
-    int offset = (blockDim.x + 1) / 2；
+    int offset = (blockDim.x + 1) / 2;
     while (offset > 0) {
         if (idx < offset && (idx + offset) < blockDim.x) {
             if (max_data[idx] < max_data[idx + offset]) {

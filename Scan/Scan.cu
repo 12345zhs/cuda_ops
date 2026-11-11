@@ -44,7 +44,7 @@ __global__ void Scan_kernel_1 (int* input, int* output) {
             temp = buffer[tid - offset];
         }
         __syncthreads();
-        if (tid >= offset && gtdi < numElements) {
+        if (tid >= offset && gtid < numElements) {
             buffer[tid] += temp;
         }
     }
@@ -72,7 +72,6 @@ __global__ void Scan_kernel_2 (int* input, int* output) {
         buffer_1[tid] = 0;
     }
  
-    buffer_1[tid] = input[gtid];
     __syncthreads();
 
     #pragma unroll

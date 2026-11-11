@@ -26,7 +26,7 @@ __global__ void gemm_tile_1(int M, int N, int K, const float* __restrict__ A, co
     const int b_vec_loads = (BLOCK_K * BLOCK_N) / threads_per_block / 4;
 
     // A矩阵的加载坐标计算
-    int a_load_row = threadIdx.x / (BLOCK_K / 4);           // 每次读取4个float，一行可以分BLOCK_K/4个float4单元，计算出当前线程在A的哪一行
+    int a_load_row = threadIdx.x / (BLOCK_K / 4);           // 每次读取4个float，一行可以分BLOCK_K/4个float4单元，计算出当前线程在A的哪一行a
     int a_load_col = (threadIdx.x % (BLOCK_K / 4)) * 4;     // threadIdx.x % (BLOCK_K / 4)决定了当前线程在A的哪一个float4的位置，乘4则为真实元素的列坐标
     int a_row_stride = BLOCK_M / a_vec_loads;               // 搬运的步长
 

@@ -1,3 +1,7 @@
+#include <cuda.h>
+#include <cuda_runtime.h>
+#include <cfloat>
+
 __device__ float float_max_reduce(float max_) {
     const int tx = threadIdx.x;
     int lane = tx % warpSize;

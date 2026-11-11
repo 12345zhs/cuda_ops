@@ -1,4 +1,5 @@
 #include <cuda_runtime.h>
+#include <cuda.h>
 
 __device__ float float_sum_reduce(float val) {
     const int tx = threadIdx.x;
